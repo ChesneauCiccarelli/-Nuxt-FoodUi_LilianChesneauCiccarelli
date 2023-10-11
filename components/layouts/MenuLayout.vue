@@ -65,6 +65,7 @@ onMounted(async () => {
 .product__button {
   display: flex;
   justify-content: center;
+  margin: auto;
   margin-top: rem(50);
 }
 </style>

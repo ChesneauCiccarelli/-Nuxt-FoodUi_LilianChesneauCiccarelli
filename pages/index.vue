@@ -1,7 +1,269 @@
 <script setup></script>
 
 <template>
-  <h1>Hello World</h1>
+  <main>
+    <HeroLayout></HeroLayout>
+
+    <section class="flex sectionHLP">
+      <div class="flex1">
+        <HLP
+          title="Today 10:00am - 10:00pm"
+          description="Working time"
+          iconName="Clock"
+        />
+      </div>
+      <div class="flex1 sectionHLP-m">
+        <HLP
+          title="Washington, D.C., DC,USA"
+          description="Our Location"
+          iconName="Localisation"
+        />
+      </div>
+      <div class="flex1">
+        <HLP
+          title="+0123 456 7891"
+          description="Phone Number"
+          iconName="Phone"
+        />
+      </div>
+    </section>
+
+    <SectionLayout class="section" section="Product" title="Most Popular Items">
+      <template #content>
+        <MenuLayout></MenuLayout>
+      </template>
+    </SectionLayout>
+
+    <SectionLayout
+      class="section"
+      section="Services"
+      title="Why Choose Our Favorite Food"
+    >
+      <template #content>
+        <div class="flex sectionServices__container">
+          <DisplayCard
+            title="Qualityfull Food"
+            description="But I must explain to you how all this mistaken idea of denouncing pleasur and prasising pain was bron."
+            iconName="Food_2"
+            iconVariant="Secondary"
+            iconSize="Medium"
+            styleCard="Neu-Pressed"
+          ></DisplayCard>
+          <DisplayCard
+            title="Healthy Food"
+            description="But I must explain to you how all this mistaken idea of denouncing pleasur and prasising pain was bron."
+            iconName="Food_1"
+            iconVariant="Secondary"
+            iconSize="Medium"
+            styleCard="Neu-Over"
+          ></DisplayCard>
+          <DisplayCard
+            title="Fast Delivery"
+            description="But I must explain to you how all this mistaken idea of denouncing pleasur and prasising pain was bron."
+            iconName="Delivery"
+            iconVariant="Secondary"
+            iconSize="Medium"
+            styleCard="Neu-Pressed"
+          ></DisplayCard>
+        </div>
+      </template>
+    </SectionLayout>
+
+    <SectionLayout
+      class="section"
+      section="How To Work"
+      title="Food Us An Important Part Of A Balanced Diet"
+    >
+      <template #content>
+        <div class="flex process">
+          <LineSVG class="LineSVG__1" />
+          <ProcessCard
+            class="process__1"
+            title="Choose"
+            description="Do you want to lose weight, exercise, adhere to a therapeutic diet? Our dietitian will help you with choosing the right program!"
+            imgSrc="/pc.png"
+            imgAlt="Image of a computer"
+          />
+          <ProcessCard
+            class="process__2"
+            title="Prepare Food"
+            description="Do you want to lose weight, exercise, adhere to a therapeutic diet? Our dietitian will help you with choosing the right program!"
+            imgSrc="/chicken.png"
+            imgAlt="Image of a chicken plate menu"
+            reverse
+          />
+          <ProcessCard
+            class="process__3"
+            title="Deliver"
+            description="Do you want to lose weight, exercise, adhere to a therapeutic diet? Our dietitian will help you with choosing the right program!"
+            imgSrc="/package.png"
+            imgAlt="Image of a to go bag"
+          />
+          <LineSVG class="LineSVG__2" />
+        </div>
+      </template>
+    </SectionLayout>
+
+    <SectionLayout
+      class="section"
+      section="Testimonials"
+      title="Our Happy Client Says"
+    >
+      <template #content>
+        <div class="flex testimonial">
+          <div class="flexRow flex1">
+            <IconsSet
+              class="testimonial__iconLeft"
+              name="ArrowLeft"
+              variant="Primary"
+              size="Small"
+            />
+            <div class="testimonial__content">
+              <div class="flex testimonial__content--container">
+                <img
+                  class="testimonial__content--picture"
+                  src="/man.jpg"
+                  alt="Image of a man"
+                />
+                <div>
+                  <p class="testimonial__content--name">Willias Jhone</p>
+                  <p class="testimonial__content--job">CEO & Co-Founder</p>
+                </div>
+              </div>
+              <p class="testimonial__content--description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+                qui officiis molestiae quos neque incidunt repellendus quo
+                quibusdam doloremque, fugit mollitia. Magni suscipit
+                consequuntur earum porro quia odio perspiciatis tempora?
+              </p>
+            </div>
+            <IconsSet
+              class="testimonial__iconRight"
+              name="ArrowRight"
+              variant="Primary"
+              size="Small"
+            />
+          </div>
+
+          <div class="flex1">
+            <img src="/menu.png" alt="Image of a familly menu" />
+          </div>
+        </div>
+      </template>
+    </SectionLayout>
+
+    <NewsletterLayout />
+  </main>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+main {
+  margin: 0 150px;
+}
+.section {
+  padding: rem(62) 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flex1 {
+  flex: 1;
+}
+
+section.sectionHLP {
+  background-color: $white;
+  border-radius: rem(50);
+  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
+  padding: rem(60) 0;
+}
+
+.sectionHLP-m {
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.sectionServices__container {
+  gap: rem(50);
+}
+
+div.process {
+  text-align: center;
+  position: relative;
+
+  &__1 {
+    text-align: left;
+  }
+
+  &__3 {
+    text-align: right;
+  }
+}
+
+.LineSVG__1 {
+  position: absolute;
+  left: 9%;
+  rotate: -5deg;
+  z-index: -1;
+}
+.LineSVG__2 {
+  position: absolute;
+  right: 9%;
+  rotate: 5deg;
+  transform: scale(-1, 1);
+  z-index: -1;
+}
+
+.testimonial {
+  &__content {
+    background: $white;
+    border-radius: 35px;
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
+    padding: rem(110) rem(50);
+
+    font-family: Helvetica, sans-serif;
+    font-size: $regular-font-size;
+    font-weight: 500;
+
+    &--container {
+      align-items: center;
+      justify-content: center;
+      gap: rem(15);
+    }
+
+    &--picture {
+      clip-path: circle(50% at 50% 50%);
+      height: rem(75);
+    }
+
+    &--name {
+      font-size: $regular-font-size;
+      font-weight: 600;
+    }
+
+    &--job {
+      font-size: $small-font-size;
+      font-weight: 400;
+    }
+
+    &--description {
+      margin-top: rem(30);
+      text-align: center;
+    }
+  }
+
+  &__iconLeft {
+    transform: translateX(50%);
+  }
+
+  &__iconRight {
+    transform: translateX(-50%);
+  }
+}
+</style>

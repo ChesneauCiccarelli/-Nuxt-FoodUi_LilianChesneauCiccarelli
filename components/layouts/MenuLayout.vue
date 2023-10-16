@@ -1,11 +1,8 @@
 <script setup>
-import { client } from "@/utils/axios.js";
-
-const recipes = ref([]);
-const getRecipesAxios = async () => {
-  const response = await client.get("/recipes");
-  return response.data;
-};
+const env = useRuntimeConfig();
+const { data: recipes } = await useAsyncData("recipes", async () => {
+  return $fetch(env.public.apiUrl + "/recipes");
+});
 
 const recipesBestSellers = 4;
 const gridPage = ref(1);
@@ -24,10 +21,6 @@ const moreRecipesToShow = computed(() => {
 const showMore = () => {
   gridPage.value++;
 };
-
-onMounted(async () => {
-  recipes.value = await getRecipesAxios();
-});
 </script>
 
 <template>

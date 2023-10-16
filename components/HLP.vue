@@ -5,6 +5,7 @@ defineProps({
   iconName: String,
   iconVariant: String,
   iconSize: String,
+  className: String,
 });
 </script>
 

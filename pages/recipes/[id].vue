@@ -1,17 +1,8 @@
 <script setup>
 const route = useRoute();
-
-const recipe = ref({});
-const getRecipeByIdAxios = async (id) => {
-  const response = await client.get(`/recipes/${id}`);
-  return response.data;
-};
-
-onMounted(() => {
-  const id = route.params.id;
-  getRecipeByIdAxios(id).then((data) => {
-    recipe.value = data;
-  });
+const env = useRuntimeConfig();
+const { data: recipe } = await useAsyncData("recipe", async (id) => {
+  return $fetch(env.public.apiUrl + `/recipes/${route.params.id}`);
 });
 </script>
 

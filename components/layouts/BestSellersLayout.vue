@@ -1,20 +1,13 @@
 <script setup>
-import { client } from "@/utils/axios.js";
-
-const recipes = ref([]);
-const getRecipesAxios = async () => {
-  const response = await client.get("/recipes");
-  return response.data;
-};
+const env = useRuntimeConfig();
+const { data: recipes } = await useAsyncData("recipes", async () => {
+  return $fetch(env.public.apiUrl + "/recipes");
+});
 
 const recipesBestSellers = 4;
 const bestSellers = computed(() => {
   // return recipes.value.filter((item) => item.image_url.toLowerCase().includes('.png'))
   return recipes.value.slice(0, recipesBestSellers);
-});
-
-onMounted(async () => {
-  recipes.value = await getRecipesAxios();
 });
 </script>
 

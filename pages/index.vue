@@ -193,19 +193,6 @@ section.sectionHLP {
   gap: rem(50);
 }
 
-div.process {
-  text-align: center;
-  position: relative;
-
-  &__1 {
-    text-align: left;
-  }
-
-  &__3 {
-    text-align: right;
-  }
-}
-
 .LineSVG__1 {
   position: absolute;
   left: 9%;
@@ -218,6 +205,19 @@ div.process {
   rotate: 5deg;
   transform: scale(-1, 1);
   z-index: -1;
+}
+
+div.process {
+  text-align: center;
+  position: relative;
+
+  &__1 {
+    text-align: left;
+  }
+
+  &__3 {
+    text-align: right;
+  }
 }
 
 .testimonial {

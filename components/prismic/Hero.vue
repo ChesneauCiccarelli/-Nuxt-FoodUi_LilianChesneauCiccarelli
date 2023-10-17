@@ -1,4 +1,3 @@
-import { MyButton } from '#build/components';
 <script setup>
 const props = defineProps({
   title: Array,

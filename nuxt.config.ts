@@ -20,5 +20,12 @@ export default defineNuxtConfig({
       }
     }
   }
-}
+  },
+  modules: ['@nuxtjs/prismic'],
+  prismic: { endpoint: process.env.NUXT_PRISMIC_ENDPOINT },
+  runtimeConfig: {
+    public: {
+      apiUrl : ''
+    }
+  }
 })

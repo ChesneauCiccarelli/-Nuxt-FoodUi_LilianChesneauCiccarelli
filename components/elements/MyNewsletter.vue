@@ -1,4 +1,14 @@
 <script setup>
+const { client } = usePrismic();
+const { data: home, error } = await useAsyncData("Homepage", () =>
+  client.getSingle("homepage")
+);
+if (!home.value || error.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page not found",
+  });
+}
 defineProps({
   mini: Boolean,
 });
@@ -21,12 +31,14 @@ defineProps({
   </div>
 
   <div v-else class="newsletter">
-    <h3 class="newsletter__title">Subcribe To Our Newsletter</h3>
-    <p class="newsletter__text">
-      Lorem ipsum dolor sit amet, consectetur adipidrscing elit. Purus mauris
-      sem sed urna venenatis vivamus. Egestas in velit nulla viverra turpis id
-      ac. Amet faucibus tempus.
-    </p>
+    <PrismicRichText
+      class="newsletter__title"
+      :field="home.data.newsletter_title"
+    ></PrismicRichText>
+    <PrismicRichText
+      class="newsletter__text"
+      :field="home.data.newsletter_text"
+    ></PrismicRichText>
     <form action="submit" class="newsletter__form">
       <div class="newsletter__form--container">
         <input

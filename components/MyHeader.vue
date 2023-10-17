@@ -3,7 +3,9 @@
 <template>
   <div class="header">
     <div class="header__logo">
-      <img src="/logo.png" alt="Logo" />
+      <a href="/">
+        <img src="/logo.png" alt="Logo" />
+      </a>
     </div>
     <div class="header__links">
       <a href="#">Home</a>

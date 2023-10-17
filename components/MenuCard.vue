@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
   title: String,
-  rating: String,
-  price: String,
+  rating: Number,
+  price: Number,
   imgSrc: String,
   imgAlt: String,
   href: String,

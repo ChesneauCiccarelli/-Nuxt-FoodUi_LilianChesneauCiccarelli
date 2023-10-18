@@ -9,6 +9,12 @@ useSeoMeta({
   ogImage: "/public/cover.jpg",
   twitterCard: "summary_large_image",
 });
+
+const store = useGlobalStore();
+onMounted(() => {
+  const cart = localStorage.getItem("cart");
+  store.setCart(JSON.parse(cart));
+});
 </script>
 
 <template>

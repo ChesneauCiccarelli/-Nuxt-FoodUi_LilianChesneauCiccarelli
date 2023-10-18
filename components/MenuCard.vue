@@ -1,4 +1,7 @@
 <script setup>
+import { useGlobalStore } from "@/stores/global";
+const store = useGlobalStore();
+
 defineProps({
   title: String,
   rating: Number,
@@ -6,6 +9,12 @@ defineProps({
   imgSrc: String,
   imgAlt: String,
   href: String,
+  id: Number,
+
+  isAddedToCart: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
@@ -23,9 +32,23 @@ defineProps({
         </div>
       </div>
       <div class="card__content--bottom">
-        <MyButton size="Small" variant="Rounded" :href="href"
-          >Add to cart</MyButton
+        <MyButton size="Small" :href="href">Recipe</MyButton>
+        <MyButton
+          size="Small"
+          variant="Rounded"
+          @click="
+            () => {
+              if (isAddedToCart) {
+                store.removeFromCart(id);
+              } else {
+                store.addToCart(id);
+              }
+              isAddedToCart = !isAddedToCart;
+            }
+          "
         >
+          {{ isAddedToCart ? "Remove from Cart" : "Add to Cart" }}
+        </MyButton>
         <p>${{ price }}</p>
       </div>
     </div>

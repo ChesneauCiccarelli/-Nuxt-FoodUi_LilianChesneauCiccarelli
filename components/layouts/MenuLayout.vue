@@ -34,6 +34,8 @@ const showMore = () => {
       :imgSrc="'/' + recipe.image_url"
       imgAlt="Image of a gyro sandwich"
       :href="`/recipes/${recipe.recipe_id}`"
+      :cardId="fetchedCardId"
+      :id="recipe.recipe_id"
     ></MenuCard>
   </div>
   <MyButton
